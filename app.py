@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from coa_project import add_strings, subtract_strings, multiply_strings, divide_strings, compare
+import os
 
 app = Flask(__name__)
 
@@ -26,5 +27,9 @@ def index():
             result = "Invalid operation"
     return render_template("index.html", result=result)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
+
